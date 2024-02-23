@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Loader from './Loader'; // Import Loader component
 import SuccessIcon from './SuccessIcon'; // Import SuccessIcon component
 import { off } from 'process';
+import "./TextEditor.css"
 
 const TextEditor: React.FC = () => {
     const [text, setText] = useState<string>('');
@@ -15,7 +16,6 @@ const TextEditor: React.FC = () => {
     useEffect(() => {
         initializeIndexedDB();
         setOfflineMode(!navigator.onLine);
-
 
         window.addEventListener('online', handleOnline);
         window.addEventListener('offline', handleOffline);
@@ -191,15 +191,16 @@ const TextEditor: React.FC = () => {
         <div>
             <h1>CD Plus</h1>
             {offlineMode && <p>You are offline, changes will sync when you'll be online</p>}
-            {loading && <Loader />} {/* Display loader if loading is true */}
-            {success && <SuccessIcon />} {/* Display success icon if success is true */}
+            
             <textarea
                 value={tempText} // Use tempText as the value for the textarea
                 onChange={handleTextAreaChange}
                 onBlur={handleTextAreaBlur}
                 rows={10}
                 cols={50}
-            />
+                />
+            {loading && <Loader />} {/* Display loader if loading is true */}
+            {success && <SuccessIcon />} {/* Display success icon if success is true */}
         </div>
     );
 };
