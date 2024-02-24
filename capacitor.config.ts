@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.glabs.cdplus',
-  appName: 'cd-sharp',
+  appName: 'CDPlus',
   webDir: 'build',
   server: {
     androidScheme: 'https'
