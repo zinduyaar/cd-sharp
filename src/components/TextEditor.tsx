@@ -102,6 +102,7 @@ const TextEditor: React.FC = () => {
             setLoading(false);
         }
     };
+    
     const compareLocalVsRemoteText = async () => {
         const networkResponse = await fetch('https://us-central1-glabs-school.cloudfunctions.net/api/getText');
         const networkData = await networkResponse.json();
