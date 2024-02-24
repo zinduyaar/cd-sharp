@@ -1,4 +1,24 @@
-class IndexedDbStorage implements IOfflineDb {
+export class IndexedDbStorage implements IOfflineDb {
+    constructor() {
+        this.initializeIndexedDB();
+    }
+    initializeIndexedDB = () => {
+        const request = indexedDB.open('textEditorDB');
+
+        request.onerror = function (event: any) {
+            console.error('IndexedDB error:', event.target.error);
+        };
+
+        request.onsuccess = function (event: any) {
+
+            console.log('IndexedDB initialized');
+        };
+
+        request.onupgradeneeded = function (event: any) {
+            const db = (event.target as IDBOpenDBRequest).result;
+            db.createObjectStore('text', { keyPath: 'id' });
+        };
+    };
     async saveData(key: string, data: any): Promise<void> {
         const request = indexedDB.open('textEditorDB', 1);
 
@@ -8,9 +28,9 @@ class IndexedDbStorage implements IOfflineDb {
 
         request.onsuccess = function (event: any) {
             const db = event.target.result;
-            const transaction = db.transaction('text', 'readwrite');
-            const objectStore = transaction.objectStore('text');
-            const addRequest = objectStore.put({ id: 1, text: data });
+            const transaction = db.transaction(key, 'readwrite');
+            const objectStore = transaction.objectStore(key);
+            const addRequest = objectStore.put(data);
 
             addRequest.onsuccess = function () {
                 console.log('Data saved to IndexedDB');
@@ -34,8 +54,8 @@ class IndexedDbStorage implements IOfflineDb {
 
             request.onsuccess = function (event: any) {
                 const db = event.target.result;
-                const transaction = db.transaction(['text'], 'readonly');
-                const objectStore = transaction.objectStore('text');
+                const transaction = db.transaction([key], 'readonly');
+                const objectStore = transaction.objectStore(key);
                 const getRequest = objectStore.get(1);
 
                 getRequest.onsuccess = function (event: any) {
