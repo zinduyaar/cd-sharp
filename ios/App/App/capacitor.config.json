@@ -1,0 +1,8 @@
+{
+	"appId": "com.glabs.cdplus",
+	"appName": "CDPlus",
+	"webDir": "build",
+	"server": {
+		"androidScheme": "https"
+	}
+}
