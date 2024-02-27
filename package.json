@@ -48,7 +48,7 @@
     "electron:serve": "concurrently -k \"cross-env BROWSER=none npm run start\" \"npm run electron:start\"",
     "electron:build": "npm run build && electron-builder -c.extraMetadata.main=build/main.js",
     "electron:start": "wait-on tcp:3000 && electron .",
-    "ios:u": "npm install && npx cap sync && npx cap open ios"
+    "iossync": "npx cap sync"
   },
   "eslintConfig": {
     "extends": [
