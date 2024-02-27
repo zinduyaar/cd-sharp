@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Loader from './Loader'; // Import Loader component
 import SuccessIcon from './SuccessIcon'; // Import SuccessIcon component
 
@@ -12,13 +12,19 @@ const TextEditor: React.FC = () => {
     const [tempText, setTempText] = useState<string>(''); // Separate state for temporary text
     const [loading, setLoading] = useState<boolean>(false);
     const [success, setSuccess] = useState<boolean>(false);
-    const [localDb, setLocalDb] = useState<IOfflineDb>();
-    const [indexedDBInitialized, setIndexedDBInitialized] = useState<boolean>(false);
+    const clientDbRef = useRef<IOfflineDb | null>(null);
     const [offlineMode, setOfflineMode] = useState<boolean>(false);
+    const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
+
 
     useEffect(() => {
-        var localDb = new LocalDb();
-        setLocalDb(localDb.getDb());
+        const initializeClientDb = async () => {
+            const localDb = new LocalDb();
+            const dbInstance = localDb.getDb();
+            clientDbRef.current = dbInstance;
+        };
+
+        initializeClientDb();
         setOfflineMode(!navigator.onLine);
 
         window.addEventListener('online', handleOnline);
@@ -57,7 +63,7 @@ const TextEditor: React.FC = () => {
         } else {
             console.log('Offline mode, getting text from indexeddb');
             // Try to get data from IndexedDB when offline
-            const offlineData = await localDb?.getData('text');
+            const offlineData = await clientDbRef.current?.getData('text');
 
             if (offlineData) {
                 setText(offlineData.text);
@@ -83,7 +89,7 @@ const TextEditor: React.FC = () => {
             setLoading(false);
             // Save data to IndexedDB
             const data = { id: 1, text: newText, overridable: false };
-            localDb?.saveData('text', data);
+            clientDbRef.current?.saveData('text', data);
             // Hide success icon after 2 seconds
             setTimeout(() => {
                 setSuccess(false);
@@ -91,7 +97,7 @@ const TextEditor: React.FC = () => {
         } else {
             console.log('Offline mode, saving data in indexeddb');
             const data = { id: 1, text: newText, overridable: true };
-            localDb?.saveData('text', data);
+            clientDbRef.current?.saveData('text', data);
             setLoading(false);
         }
     };
@@ -99,7 +105,7 @@ const TextEditor: React.FC = () => {
     const compareLocalVsRemoteText = async () => {
         const networkResponse = await fetch('https://us-central1-glabs-school.cloudfunctions.net/api/getText');
         const networkData = await networkResponse.json();
-        const offlineData = await localDb?.getData('text');
+        const offlineData = await clientDbRef.current?.getData('text');
         if (offlineData && offlineData.overridable && offlineData.text !== networkData.text) {
 
             updateText(offlineData.text);
@@ -111,23 +117,37 @@ const TextEditor: React.FC = () => {
             setLoading(false);
             // Save data to IndexedDB
             const data = { id: 1, text: networkData.text, overridable: false };
-            localDb?.saveData('text', data);
+            clientDbRef.current?.saveData('text', data);
         }
 
     }
     const handleTextAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setTempText(event.target.value); // Update tempText as the user types
+        const newText = event.target.value;
+        setTempText(newText); // Update tempText as the user types
+
+        // Debounce the updateText call
+        if (debounceTimerRef.current) {
+            clearTimeout(debounceTimerRef.current);
+        }
+        debounceTimerRef.current = setTimeout(() => {
+            updateText(newText);
+        }, 300); // Debounce time: 300ms
     };
 
     const handleTextAreaBlur = () => {
+        // Clear the debounce timer
+        if (debounceTimerRef.current) {
+            clearTimeout(debounceTimerRef.current);
+        }
+
         if (tempText !== text) {
             updateText(tempText); // Call updateText only if tempText has changed
         }
     };
 
     return (
-        <div>
-            <h1>CD Plus +</h1>
+        <div className='mainCont'>
+            <h1>CD Plus</h1>
             {offlineMode && <p>You are offline, changes will sync when you'll be online</p>}
 
             <textarea

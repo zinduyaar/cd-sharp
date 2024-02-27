@@ -11,3 +11,8 @@ textarea {
   background-color: #f8f8f8; /* Light grey background */
   color: #555; /* Dark grey text color */
 }
+
+.mainCont {
+  width: calc(100vw - 50px); /* Full width */
+  margin: 8px 15px; /* Some margin */
+}
