@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Loader from './Loader'; // Import Loader component
-import SuccessIcon from './SuccessIcon'; // Import SuccessIcon component
-
-import { LocalDb } from '../shared/OfflineDb/LocalDb'
-import "./TextEditor.css"
-
+import styles from './TextareaComponent.module.css'; // Import the CSS module
+import Loader from '../Loader'; // Import Loader component
+import SuccessIcon from '../SuccessIcon'; // Import SuccessIcon component
+import { LocalDb } from '../../shared/OfflineDb/LocalDb'
 import { Network } from '@capacitor/network';
 
 const TextEditor: React.FC = () => {
@@ -147,10 +145,8 @@ const TextEditor: React.FC = () => {
 
     return (
         <div className='mainCont'>
-            <h1>CD Plus</h1>
             {offlineMode && <p>You are offline, changes will sync when you'll be online</p>}
-
-            <textarea
+            <textarea className={styles.textarea}
                 value={tempText} // Use tempText as the value for the textarea
                 onChange={handleTextAreaChange}
                 onBlur={handleTextAreaBlur}

@@ -6,12 +6,15 @@ PODS:
     - Capacitor
   - CapacitorNetwork (5.0.7):
     - Capacitor
+  - CapacitorPreferences (5.0.7):
+    - Capacitor
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorGeolocation (from `../../node_modules/@capacitor/geolocation`)"
   - "CapacitorNetwork (from `../../node_modules/@capacitor/network`)"
+  - "CapacitorPreferences (from `../../node_modules/@capacitor/preferences`)"
 
 EXTERNAL SOURCES:
   Capacitor:
@@ -22,13 +25,16 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/geolocation"
   CapacitorNetwork:
     :path: "../../node_modules/@capacitor/network"
+  CapacitorPreferences:
+    :path: "../../node_modules/@capacitor/preferences"
 
 SPEC CHECKSUMS:
   Capacitor: fc155ee2ee45a2093d716f13cf5aa5a865e2d85a
   CapacitorCordova: e825fce1a2e14e4b5730641c7e098dccf74397b7
   CapacitorGeolocation: 918a292459542bcce98433f9e7c7909f8c72838a
   CapacitorNetwork: 81ef9728aa7a65cac8c1181ce79e578162b57b57
+  CapacitorPreferences: 77ac427e98db83bace772455f8ba447430382c4c
 
-PODFILE CHECKSUM: a0d712d2ef63fa791572b0f93b3f50b651073b0d
+PODFILE CHECKSUM: a15e68d57f0135afc284b8c4fbc3af7e297c80a9
 
 COCOAPODS: 1.15.2

@@ -1,0 +1,33 @@
+.layoutContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+  gap: 20px; /* Space between columns */
+  max-width: 1600px; /* Maximum width of the container */
+  margin: 0 auto; /* Center the container */
+  padding: 20px; /* Padding around the container */
+}
+
+.mainContent {
+  grid-column: 2 / span 1; /* Ensures the main content is always in the middle column */
+}
+
+/* Responsive adjustments for larger screens */
+@media (min-width: 1024px) {
+  .layoutContainer {
+    grid-template-columns: 1fr 640px 1fr; /* Adjust the middle column width as needed */
+  }
+}
+
+/* Adjustments for even larger screens */
+@media (min-width: 1440px) {
+  .layoutContainer {
+    grid-template-columns: 1fr 800px 1fr; /* Increase the middle column width for very large screens */
+  }
+}
+
+/* Additional adjustments for ultra-wide screens */
+@media (min-width: 1920px) {
+  .layoutContainer {
+    grid-template-columns: 1fr 960px 1fr; /* Further adjust for ultra-wide screens */
+  }
+}

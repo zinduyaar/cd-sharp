@@ -1,0 +1,20 @@
+.textarea {
+    width: 100%; /* Full width */
+    padding: 10px; /* Some padding */
+    margin: 8px 0; /* Some margin */
+    display: inline-block; /* Align properly */
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Box sizing */
+    resize: vertical; /* Allow only vertical resize */
+    font-size: 16px; /* Text size */
+    font-family: Arial, sans-serif; /* Font family */
+  }
+  
+  .textarea:focus {
+    border-color: #4A90E2; /* Focus color */
+    outline: none; /* Remove default focus outline */
+  }
+  
+  /* Add more styles as needed */
+  

@@ -1,0 +1,73 @@
+.profile {
+    display: flex;
+    flex-direction: column; /* Stack vertically on small screens */
+    align-items: center; /* Center-align items for a mobile-first approach */
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    margin: 20px auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-width: 800px; /* Maximum width to ensure content does not stretch too much on larger screens */
+  }
+  
+  .avatar {
+    width: 120px; /* Slightly smaller for mobile */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px; /* Space between avatar and info on small screens */
+  }
+  
+  .info {
+    text-align: center;
+  }
+  
+  .name, .detail, .interests ul, .interests li {
+    margin: 8px 0;
+  }
+  
+  .interests ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .interests li {
+    background-color: #eee;
+    border-radius: 15px;
+    padding: 5px 15px;
+    margin: 5px;
+    font-size: 14px;
+  }
+  
+  /* Larger screens */
+  @media (min-width: 768px) {
+    .profile {
+      flex-direction: row; /* Side-by-side layout on larger screens */
+      align-items: flex-start; /* Align items at the start */
+    }
+  
+    .avatar {
+      margin-right: 20px; /* Space between avatar and info on large screens */
+      margin-bottom: 0; /* Reset bottom margin */
+    }
+  
+    .info {
+      text-align: left;
+    }
+  }
+  
+  /* Very large screens */
+  @media (min-width: 1200px) {
+    .avatar {
+      width: 150px; /* Larger avatar for larger screens */
+      height: 150px;
+    }
+  
+    .profile {
+      padding: 40px; /* More padding for larger layouts */
+    }
+  }
+  

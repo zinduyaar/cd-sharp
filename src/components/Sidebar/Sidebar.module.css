@@ -1,0 +1,25 @@
+.sidebar {
+    background-color: #eee;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+    width: 200px;
+    height: 100vh; /* Full-height */
+    position: fixed;
+    top: 0;
+    left: -200px; /* Initially hidden */
+    transition: left 0.3s;
+  }
+  
+  .open {
+    left: 0; /* Show sidebar */
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 10px 0;
+  }
+  
