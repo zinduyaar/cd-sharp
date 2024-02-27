@@ -4,7 +4,7 @@
   gap: 20px; /* Space between columns */
   max-width: 1600px; /* Maximum width of the container */
   margin: 0 auto; /* Center the container */
-  padding: 20px; /* Padding around the container */
+  padding: 0px; /* Padding around the container */
 }
 
 .mainContent {
@@ -21,7 +21,7 @@
 /* Adjustments for even larger screens */
 @media (min-width: 1440px) {
   .layoutContainer {
-    grid-template-columns: 1fr 800px 1fr; /* Increase the middle column width for very large screens */
+    grid-template-columns: 1fr 1000px 1fr; /* Increase the middle column width for very large screens */
   }
 }
 

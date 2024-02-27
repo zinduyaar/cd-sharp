@@ -3,40 +3,43 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import  db from '../../firebase-config'; // Adjust the import path as needed
 import debounce from 'lodash.debounce'; // If you haven't installed lodash.debounce, run npm install lodash.debounce
 
-const DocumentEditor: React.FC = () => {
-  const [content, setContent] = useState<string>('');
-  const documentId = 'eTIjcB2QBLbVn4Ahqjhe'; // Replace with your actual document ID
-  const documentRef = doc(db, 'CDFeedback', documentId); 
+const AutoSaveTextarea: React.FC = () => {
+  const [text, setText] = useState<string>('');
+  const documentRef = doc(db, 'CDFeedback', 'eTIjcB2QBLbVn4Ahqjhe'); // Use your actual collection and document ID
 
-  // Fetch the document content once when the component mounts
-  useEffect(() => {
-    const fetchContent = async () => {
-      const docSnap = await getDoc(documentRef);
-      if (docSnap.exists()) {
-        setContent(docSnap.data().content || '');
-      } else {
-        console.log('No such document!');
-      }
-    };
-
-    fetchContent();
+  // Fetch initial content from Firestore
+  const fetchContent = useCallback(async () => {
+    const docSnap = await getDoc(documentRef);
+    if (docSnap.exists()) {
+      setText(docSnap.data().content || ''); // Assuming your document has a 'content' field
+    } else {
+      console.log("No such document!");
+    }
   }, [documentRef]);
 
-  // Debounced update function to save content to Firestore
-  const debouncedUpdate = useCallback(debounce(async (newContent: string) => {
-    await updateDoc(documentRef, { content: newContent });
-  }, 1000), []); // Adjust debounce time as needed
+  useEffect(() => {
+    fetchContent();
+  }, [fetchContent]);
 
-  // Handle textarea change
+  // Debounced save function
+  const debouncedSave = useCallback(debounce(async (newText: string) => {
+    try {
+      await updateDoc(documentRef, { content: newText });
+      console.log('Content saved');
+    } catch (error) {
+      console.error("Error saving content:", error);
+    }
+  }, 1000), [documentRef]); // Debounce delay of 1000ms
+
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const newContent = event.target.value;
-    setContent(newContent);
-    debouncedUpdate(newContent);
+    const newValue = event.target.value;
+    setText(newValue);
+    debouncedSave(newValue);
   };
 
   return (
     <textarea
-      value={content}
+      value={text}
       onChange={handleChange}
       placeholder="Start typing..."
       style={{ width: '100%', height: '200px' }}
@@ -44,4 +47,4 @@ const DocumentEditor: React.FC = () => {
   );
 };
 
-export default DocumentEditor;
+export default AutoSaveTextarea;

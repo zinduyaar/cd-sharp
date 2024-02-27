@@ -6,7 +6,7 @@ const ProfileComponent = () => {
   const profileData = {
     name: 'Nitin Gupta',
     bio: 'Chapter Lead Software Engineer at Boston Consulting Group. Currently leading a Proof of Concept (POC) for the new CD Plus tool designed to innovate and enhance project delivery methodologies at BCG.',
-    avatar: 'https://avatars.githubusercontent.com/u/100381673?v=4', // Placeholder image, replace with actual image if available
+    avatar: 'https://avatars.githubusercontent.com/u/13133681?v=4', // Placeholder image, replace with actual image if available
     email: 'gupta.nitin@bcg.com',
     location: 'New Delhi, GSD',
     project: 'Leading POC for new CD Plus tool for BCG',
