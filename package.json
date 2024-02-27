@@ -6,6 +6,8 @@
     "@capacitor/android": "^5.7.0",
     "@capacitor/cli": "^5.7.0",
     "@capacitor/core": "^5.7.0",
+    "@capacitor/geolocation": "^5.0.7",
+    "@capacitor/ios": "^5.7.0",
     "@capacitor/network": "^5.0.7",
     "@electron/remote": "^2.1.2",
     "@testing-library/jest-dom": "^5.17.0",
@@ -45,7 +47,8 @@
     "eject": "react-scripts eject",
     "electron:serve": "concurrently -k \"cross-env BROWSER=none npm run start\" \"npm run electron:start\"",
     "electron:build": "npm run build && electron-builder -c.extraMetadata.main=build/main.js",
-    "electron:start": "wait-on tcp:3000 && electron ."
+    "electron:start": "wait-on tcp:3000 && electron .",
+    "ios:u": "npm install && npx cap sync && npx cap open ios"
   },
   "eslintConfig": {
     "extends": [
