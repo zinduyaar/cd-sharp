@@ -4,7 +4,7 @@ import styles from './MainContent.module.css';
 import TextEditor from './Textarea/TextEditor';
 import GeolocationComponent from './geolocation';
 import ProfileComponent from './ProfileComponent/ProfileComponent';
-
+import AutoSaveTextarea from './AutoSaveTextArea/AutoSaveTextarea'
 const MainContent = () => {
   return (
     <div className={styles.layoutContainer}>
@@ -13,7 +13,7 @@ const MainContent = () => {
       </div>
       <div className={styles.mainContent}>
         <ProfileComponent />
-        <TextEditor/>
+        <AutoSaveTextarea/>
         <GeolocationComponent/>
       </div>
       <div className={styles.sideSpace}>
