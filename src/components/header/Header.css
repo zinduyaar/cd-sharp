@@ -4,7 +4,9 @@
 .bg-cd-900{
   background-color: rgba(25, 122, 86, .9);
 }
-
+.bg-cd{
+  background-color: rgba(25, 122, 86, 1);
+}
 .bg-cd-700{
   background-color: rgba(25, 122, 86, .7);
 }
@@ -12,4 +14,13 @@
   font-size: xx-large;
   color: white;
   font-family: "Inter var", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.bottom-navbar {
+  padding: 10px 20px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
 }

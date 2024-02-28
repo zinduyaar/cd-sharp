@@ -6,7 +6,7 @@ const ProfileComponent = () => {
   const profileData = {
     name: 'Nitin Gupta',
     bio: 'Chapter Lead Software Engineer at Boston Consulting Group. Currently leading a Proof of Concept (POC) for the new CD Plus tool designed to innovate and enhance project delivery methodologies at BCG.',
-    avatar: 'https://avatars.githubusercontent.com/u/13133681?v=4', // Placeholder image, replace with actual image if available
+    avatar: 'https://staffpicture.bcg.com/staffpicture/Default.aspx?hrId=352097&height=250&width=250&cache=100&mode=circle&bgcolor=ddd', // Placeholder image, replace with actual image if available
     email: 'gupta.nitin@bcg.com',
     location: 'New Delhi, GSD',
     project: 'Leading POC for new CD Plus tool for BCG',
@@ -44,7 +44,7 @@ const ProfileComponent = () => {
               <p className="text-gray-700 mb-4">
                 <strong>Location:</strong> {profileData.location}
               </p>
-              <p className="text-gray-700 mb-4 hidden md:block">
+              <p className="text-gray-700 mb-4">
                 <strong>Current Project:</strong> {profileData.project}
               </p>
 

@@ -14,7 +14,7 @@ const MainContent = () => {
       <div className={styles.mainContent}>
         <ProfileComponent />
         <AutoSaveTextarea/>
-        <GeolocationComponent/>
+        {/* <GeolocationComponent/> */}
       </div>
       <div className={styles.sideSpace}>
         {/* Right side content or empty for spacing */}

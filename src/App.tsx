@@ -25,7 +25,7 @@ const App: React.FC = () => {
         <MainContent />
         {/* <Sidebar isOpen={isSidebarOpen}/> */}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
