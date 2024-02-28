@@ -1,0 +1,15 @@
+.bg-cd-800 {
+  background-color: rgba(25, 122, 86, .8);
+}
+.bg-cd-900{
+  background-color: rgba(25, 122, 86, .9);
+}
+
+.bg-cd-700{
+  background-color: rgba(25, 122, 86, .7);
+}
+.app-name{
+  font-size: xx-large;
+  color: white;
+  font-family: "Inter var", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}

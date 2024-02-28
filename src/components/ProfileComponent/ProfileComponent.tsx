@@ -14,23 +14,56 @@ const ProfileComponent = () => {
   };
 
   return (
-    <div className={styles.profile}>
-      <img src={profileData.avatar} alt="Nitin Gupta" className={styles.avatar} />
-      <div className={styles.info}>
-        <h2 className={styles.name}>{profileData.name}</h2>
-        <p className={styles.bio}>{profileData.bio}</p>
-        <p className={styles.detail}><strong>Email:</strong> {profileData.email}</p>
-        <p className={styles.detail}><strong>Location:</strong> {profileData.location}</p>
-        <p className={styles.detail}><strong>Current Project:</strong> {profileData.project}</p>
-        <div className={styles.interests}>
-          <strong>Interests:</strong>
-          <ul>
-            {profileData.interests.map((interest, index) => (
-              <li key={index}>{interest}</li>
-            ))}
-          </ul>
+    <div>
+      <header className="bg-white shadow hidden md:block">
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900">Dashboard</h1>
         </div>
-      </div>
+      </header>
+      <main>
+        <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-center md:justify-start gap-6">
+            <div className="w-full md:w-1/4">
+              <img
+                src={profileData.avatar} alt="Nitin Gupta"
+                className="w-full md:max-w-xs rounded-full shadow-md"
+              />
+            </div>
+            <div className="w-full md:w-1/4">
+              <h2 className="text-2xl font-bold mb-2">{profileData.name}</h2>
+              <p className="text-gray-700 mb-4 hidden md:block">
+                {profileData.bio}
+              </p>
+
+            </div>
+            <div className="w-full md:w-1/4">
+              <p className="text-gray-700 mb-4">
+                <strong>Email:</strong> {profileData.email}
+              </p>
+              <p className="text-gray-700 mb-4">
+                <strong>Location:</strong> {profileData.location}
+              </p>
+              <p className="text-gray-700 mb-4 hidden md:block">
+                <strong>Current Project:</strong> {profileData.project}
+              </p>
+
+            </div>
+            <div className="w-full md:w-1/4 hidden md:block">
+              <div className="text-gray-700 mb-4">
+                <strong>Interests:</strong>
+                <ul>
+                  {profileData.interests.map((interest, index) => (
+                    <li key={index}>{interest}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+
     </div>
   );
 };
