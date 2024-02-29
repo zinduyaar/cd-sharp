@@ -3,10 +3,6 @@
 	"appName": "CDPlus",
 	"webDir": "build",
 	"server": {
-		"androidScheme": "https",
-		"hostname": "avatars.githubusercontent.com",
-		"allowNavigation": [
-			"avatars.githubusercontent.com"
-		]
+		"androidScheme": "https"
 	}
 }
