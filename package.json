@@ -20,6 +20,7 @@
     "@types/node": "^17.0.45",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
+    "aws-amplify": "^6.0.18",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "electron-is-dev": "^3.0.1",
@@ -54,7 +55,10 @@
     "electron:serve": "concurrently -k \"cross-env BROWSER=none npm run start\" \"npm run electron:start\"",
     "electron:build": "npm run build && electron-builder -c.extraMetadata.main=build/main.js",
     "electron:start": "wait-on tcp:3000 && electron .",
-    "iossync": "npx cap sync"
+    "iossync": "npx cap sync",
+    "amplify-modelgen": "node amplify/scripts/amplify-modelgen.js",
+    "amplify-push": "node amplify/scripts/amplify-push.js"
+    
   },
   "eslintConfig": {
     "extends": [

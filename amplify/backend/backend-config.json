@@ -1,0 +1,22 @@
+{
+  "api": {
+    "cdplus": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDate": "2024-04-03T04:47:13.628Z",
+              "apiKeyExpirationDays": 30,
+              "description": "cdplus"
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  }
+}

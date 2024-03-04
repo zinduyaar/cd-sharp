@@ -46,7 +46,7 @@ const AutoSaveTextarea: React.FC = () => {
     // />
 
     <div className="col-span-full">
-          <label htmlFor="about" className="block text-sm font-medium leading-6 text-gray-900">Observations</label>
+          <label htmlFor="about" className="block text-sm font-medium leading-6 text-gray-900">Observations (Firestore) : </label>
           <div className="mt-2">
             <textarea id="observations"  
             name="observations" 

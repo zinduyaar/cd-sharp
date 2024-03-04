@@ -5,7 +5,10 @@ import Footer from './components/Footer/Footer';
 import Sidebar from './components/Sidebar/Sidebar';
 import MainContent from './components/MainContent';
 import styles from './App.module.css';
+import { Amplify } from 'aws-amplify';
+import config from './aws-exports.js';
 
+Amplify.configure(config);
 
 const App: React.FC = () => {
 
